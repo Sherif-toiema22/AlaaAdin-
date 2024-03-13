@@ -36,4 +36,7 @@ public class FactoryOwner {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "imageLink")
+    private String imageLink;
+
 }

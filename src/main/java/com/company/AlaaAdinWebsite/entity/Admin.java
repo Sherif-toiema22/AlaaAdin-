@@ -32,7 +32,8 @@ public class Admin {
 
     @Column(name = "password")
     private String password;
+    //product -> id , title
+    //categoty -> id , title , link of image
 
-
-
+    //SubCategoty -> id , title , link of image,foreign key of category
 }
