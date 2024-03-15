@@ -39,4 +39,7 @@ public class FactoryOwner {
     @Column(name = "imageLink")
     private String imageLink;
 
+    @Column(name = "isApproved")
+    private Boolean isApproved=false;
+
 }
