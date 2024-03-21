@@ -1,12 +1,13 @@
-package com.company.AlaaAdinWebsite.service;
+package com.company.AlaaAdinWebsite.service.imp;
 
 import com.company.AlaaAdinWebsite.dao.ClientRepository;
 import com.company.AlaaAdinWebsite.entity.Client;
+import com.company.AlaaAdinWebsite.service.ClientService;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ClientServiceImp implements ClientService{
+public class ClientServiceImp implements ClientService {
 
     private ClientRepository clientRepository;
 

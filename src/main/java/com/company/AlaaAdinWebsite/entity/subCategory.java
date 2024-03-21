@@ -1,13 +1,14 @@
 package com.company.AlaaAdinWebsite.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -20,11 +21,18 @@ public class subCategory {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "imageLink")
-    private String imageLink;
-
     @Column(name = "title")
     private String title;
 
-    //ForiegnKey of category
+    @Column(name = "imageLink")
+    private String imageLink;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
+            CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
+            CascadeType.REFRESH,CascadeType.DETACH})
+    private List<Product> products;
 }

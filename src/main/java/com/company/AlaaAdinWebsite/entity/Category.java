@@ -1,13 +1,12 @@
 package com.company.AlaaAdinWebsite.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Setter
 @Getter
@@ -15,7 +14,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "category")
-public class category {
+public class Category {
+
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
@@ -25,6 +25,10 @@ public class category {
 
     @Column(name = "title")
     private String title;
+
+    @OneToMany(mappedBy = "category" ,cascade = CascadeType.ALL)
+    private List<subCategory> subCategorys;
+
 
 
 }

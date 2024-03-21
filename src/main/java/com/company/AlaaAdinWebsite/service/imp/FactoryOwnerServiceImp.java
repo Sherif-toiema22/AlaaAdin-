@@ -1,13 +1,16 @@
-package com.company.AlaaAdinWebsite.service;
+package com.company.AlaaAdinWebsite.service.imp;
 
 import com.company.AlaaAdinWebsite.dao.FactoryOwnerRepository;
 import com.company.AlaaAdinWebsite.entity.FactoryOwner;
+import com.company.AlaaAdinWebsite.service.FactoryOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-public class FactoryOwnerServiceImp implements FactoryOwnerService{
+@Service
+public class FactoryOwnerServiceImp implements FactoryOwnerService {
 
     private FactoryOwnerRepository factoryOwnerRepository;
 
@@ -27,8 +30,9 @@ public class FactoryOwnerServiceImp implements FactoryOwnerService{
     }
 
     @Override
-    public void save(FactoryOwner factoryOwner) {
+    public FactoryOwner save(FactoryOwner factoryOwner) {
 
+        return factoryOwner;
     }
 
     @Override

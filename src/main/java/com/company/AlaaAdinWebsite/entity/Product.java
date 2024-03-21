@@ -1,9 +1,6 @@
 package com.company.AlaaAdinWebsite.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +22,11 @@ public class Product {
     @Column(name = "imageLink")
     private String imageLink;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
+            CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "sub_category_id")
+    private subCategory subCategory;
 
-    //foriegn key of subcategory and factory owner
 
 
 }
