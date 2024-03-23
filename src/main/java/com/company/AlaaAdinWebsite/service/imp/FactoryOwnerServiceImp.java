@@ -12,10 +12,10 @@ import java.util.Optional;
 @Service
 public class FactoryOwnerServiceImp implements FactoryOwnerService {
 
-    private FactoryOwnerRepository factoryOwnerRepository;
+    private final FactoryOwnerRepository factoryOwnerRepository;
 
     @Autowired
-    FactoryOwnerServiceImp(FactoryOwnerRepository theFactoryOwnerRepository){
+    public FactoryOwnerServiceImp(FactoryOwnerRepository theFactoryOwnerRepository){
         factoryOwnerRepository=theFactoryOwnerRepository;
     }
 
@@ -36,7 +36,7 @@ public class FactoryOwnerServiceImp implements FactoryOwnerService {
     }
 
     @Override
-    public void deleteById(int theId) {
+    public void deleteById(Long theId) {
 
     }
 }

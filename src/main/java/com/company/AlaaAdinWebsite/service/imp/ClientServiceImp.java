@@ -31,7 +31,7 @@ public class ClientServiceImp implements ClientService {
     }
 
     @Override
-    public void deleteById(int theId) {
+    public void deleteById(Long theId) {
 
     }
 }

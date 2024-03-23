@@ -9,5 +9,5 @@ public interface ClientService {
     List<Client> findAll();
     Optional<Client> findById(Long theId);
     void save(Client client);
-    void deleteById(int theId);
+    void deleteById(Long theId);
 }

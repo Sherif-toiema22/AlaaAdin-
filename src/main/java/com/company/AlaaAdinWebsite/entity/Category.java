@@ -27,8 +27,7 @@ public class Category {
     private String title;
 
     @OneToMany(mappedBy = "category" ,cascade = CascadeType.ALL)
-    private List<subCategory> subCategorys;
-
+    private List<SubCategory> subCategorys;
 
 
 }

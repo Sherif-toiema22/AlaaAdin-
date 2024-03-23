@@ -25,7 +25,7 @@ public class Product {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
             CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "sub_category_id")
-    private subCategory subCategory;
+    private SubCategory subCategory;
 
 
 

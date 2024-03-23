@@ -10,7 +10,7 @@ public interface FactoryOwnerService {
     List<FactoryOwner> findAll();
     Optional<FactoryOwner> findById(Long theId);
     FactoryOwner save(FactoryOwner factoryOwner);
-    void deleteById(int theId);
+    void deleteById(Long theId);
 
 
 
