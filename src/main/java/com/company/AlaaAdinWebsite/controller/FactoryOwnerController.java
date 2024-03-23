@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/api")
 public class FactoryOwnerController {
 
     private FactoryOwnerService factoryOwnerService;
@@ -27,13 +26,13 @@ public class FactoryOwnerController {
 
     // add mapping for GET /employees/{employeeId}
 
-    @GetMapping("/factoryowners/{factoryownersId}")
-    public Optional<FactoryOwner> getfactoryowners(@PathVariable Long factoryowner) {
+    @GetMapping("/factoryowners/{factoryownerId}")
+    public Optional<FactoryOwner> getfactoryowners(@PathVariable Long factoryownerId) {
 
-        Optional<FactoryOwner> theFactoryOwner = factoryOwnerService.findById(factoryowner);
+        Optional<FactoryOwner> theFactoryOwner = factoryOwnerService.findById(factoryownerId);
 
         if (theFactoryOwner == null) {
-            throw new RuntimeException("Employee id not found - " + factoryowner);
+            throw new RuntimeException("Factory owner id not found - " + factoryownerId);
         }
 
         return theFactoryOwner;
@@ -41,12 +40,34 @@ public class FactoryOwnerController {
     @PostMapping("/factoryowners")
     public FactoryOwner addEmployee(@RequestBody FactoryOwner factoryOwner) {
 
+        factoryOwner.setId(0L);
+
         FactoryOwner factoryOwner1= factoryOwnerService.save(factoryOwner);
 
         return factoryOwner1;
     }
+    @PutMapping("/factoryowners")
+    public FactoryOwner updateFactoryOwner(@RequestBody FactoryOwner thefactoryOwner) {
 
+        FactoryOwner factoryOwner = factoryOwnerService.save(thefactoryOwner);
 
+        return factoryOwner;
+    }
+    @DeleteMapping("/factoryowners/{factoryownerId}")
+    public String deleteFactoryOwner(@PathVariable Long factoryownerId) {
+
+        Optional<FactoryOwner> tempfactoryOwner= factoryOwnerService.findById(factoryownerId);
+
+        // throw exception if null
+
+        if (tempfactoryOwner == null) {
+            throw new RuntimeException("Factory Owner id not found - " + factoryownerId);
+        }
+
+        factoryOwnerService.deleteById(factoryownerId);
+
+        return "Deleted employee id - " + factoryownerId;
+    }
 
 
 

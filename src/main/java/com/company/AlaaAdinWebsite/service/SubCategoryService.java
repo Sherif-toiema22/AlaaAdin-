@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface SubCategoryService {
     List<SubCategory> findAll();
     Optional<SubCategory> findById(Long theId);
-    void save(SubCategory subCategory);
+    SubCategory save(SubCategory subCategory);
     void deleteById(Long theId);
 }

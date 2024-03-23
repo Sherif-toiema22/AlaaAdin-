@@ -2,7 +2,7 @@ package com.company.AlaaAdinWebsite.service.imp;
 
 import com.company.AlaaAdinWebsite.dao.ProductRepository;
 import com.company.AlaaAdinWebsite.entity.Product;
-import com.company.AlaaAdinWebsite.service.ProductSerevice;
+import com.company.AlaaAdinWebsite.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class ProductServiceImp implements ProductSerevice {
+public class ProductServiceImp implements ProductService {
 
     private final ProductRepository productRepository;
 
@@ -32,8 +32,9 @@ public class ProductServiceImp implements ProductSerevice {
     }
 
     @Override
-    public void save(Product product) {
+    public Product save(Product product) {
         productRepository.save(product);
+        return product;
     }
 
     @Override

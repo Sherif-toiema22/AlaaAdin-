@@ -32,8 +32,9 @@ public class SubCategoryServiceImp implements SubCategoryService {
     }
 
     @Override
-    public void save(SubCategory subCategory) {
+    public SubCategory save(SubCategory subCategory) {
         subCategoryRepository.save(subCategory);
+        return subCategory;
     }
 
 

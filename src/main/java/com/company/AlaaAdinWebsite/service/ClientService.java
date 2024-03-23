@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface ClientService {
     List<Client> findAll();
     Optional<Client> findById(Long theId);
-    void save(Client client);
+    Client save(Client client);
     void deleteById(Long theId);
 }

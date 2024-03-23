@@ -3,10 +3,12 @@ package com.company.AlaaAdinWebsite.service.imp;
 import com.company.AlaaAdinWebsite.dao.ClientRepository;
 import com.company.AlaaAdinWebsite.entity.Client;
 import com.company.AlaaAdinWebsite.service.ClientService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ClientServiceImp implements ClientService {
 
     private ClientRepository clientRepository;
@@ -26,8 +28,9 @@ public class ClientServiceImp implements ClientService {
     }
 
     @Override
-    public void save(Client client) {
+    public Client save(Client client) {
 
+        return client;
     }
 
     @Override

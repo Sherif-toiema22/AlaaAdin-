@@ -33,8 +33,9 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public void save(Category category) {
+    public Category save(Category category) {
         categoryRepository.save(category);
+        return category;
     }
 
     @Override
