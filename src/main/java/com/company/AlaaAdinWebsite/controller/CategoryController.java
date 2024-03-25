@@ -37,6 +37,8 @@ public class CategoryController {
 
         return theCategory;
     }
+
+
     @PostMapping("/categories")
     public Category addCategory(@RequestBody Category category) {
 
