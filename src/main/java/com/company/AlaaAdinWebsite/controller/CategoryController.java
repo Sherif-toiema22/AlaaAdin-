@@ -3,66 +3,71 @@ package com.company.AlaaAdinWebsite.controller;
 import com.company.AlaaAdinWebsite.entity.Category;
 import com.company.AlaaAdinWebsite.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/category")
 public class CategoryController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @Autowired
     public CategoryController(CategoryService categoryService){
         this.categoryService=categoryService;
     }
 
-    @GetMapping("/categories")
+    @GetMapping("/hi")
+    public String sayHi() {
+        return "hello";
+    }
+
+
+    @GetMapping("/list")
     public List<Category> findAll() {
         return categoryService.findAll();
     }
 
     // add mapping for GET /employees/{employeeId}
 
-    @GetMapping("/categories/{categoryId}")
-    public Optional<Category> getCategotry(@PathVariable Long categoryId) {
+    @GetMapping("/{categoryId}")
+    public Optional<Category> getCategory(@PathVariable Long categoryId) {
 
         Optional<Category> theCategory = categoryService.findById(categoryId);
 
-        if (theCategory == null) {
+        if (theCategory.isEmpty()) {
             throw new RuntimeException("category id not found - " + categoryId);
         }
 
         return theCategory;
     }
 
-
-    @PostMapping("/categories")
+    @PostMapping("/save")
     public Category addCategory(@RequestBody Category category) {
 
         category.setId(0L);
 
-        Category category1= categoryService.save(category);
 
-        return category1;
+        return categoryService.save(category);
+//        return "redirect:/category/list";
     }
-    @PutMapping("/categories")
+    @PutMapping("/update")
     public Category updateCategory(@RequestBody Category thecategory) {
 
-        Category category = categoryService.save(thecategory);
-
-        return category;
+        return categoryService.save(thecategory);
     }
-    @DeleteMapping("/categories/{categoryId}")
+    @DeleteMapping("/{categoryId}")
     public String deleteCategory(@PathVariable Long categoryId) {
 
         Optional<Category> tempcategory= categoryService.findById(categoryId);
 
         // throw exception if null
 
-        if (tempcategory == null) {
+        if (tempcategory.isEmpty()) {
             throw new RuntimeException("category id not found - " + categoryId);
         }
 

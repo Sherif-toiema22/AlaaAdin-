@@ -32,6 +32,7 @@ public class CategoryServiceImp implements CategoryService {
         return categoryRepository.findById(theId);
     }
 
+    @Transactional
     @Override
     public Category save(Category category) {
         categoryRepository.save(category);
