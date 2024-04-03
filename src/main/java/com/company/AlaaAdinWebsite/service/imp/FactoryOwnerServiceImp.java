@@ -5,6 +5,7 @@ import com.company.AlaaAdinWebsite.entity.FactoryOwner;
 import com.company.AlaaAdinWebsite.service.FactoryOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,18 +26,20 @@ public class FactoryOwnerServiceImp implements FactoryOwnerService {
     }
 
     @Override
-    public Optional<FactoryOwner> findById(Long theId) {
-        return factoryOwnerRepository.findById(theId);
+    public Optional<FactoryOwner> findById(int theId) {
+        return factoryOwnerRepository.findById( theId);
     }
 
+    @Transactional
     @Override
     public FactoryOwner save(FactoryOwner factoryOwner) {
 
         return factoryOwner;
     }
 
+    @Transactional
     @Override
-    public void deleteById(Long theId) {
+    public void deleteById(int theId) {
 
     }
 }

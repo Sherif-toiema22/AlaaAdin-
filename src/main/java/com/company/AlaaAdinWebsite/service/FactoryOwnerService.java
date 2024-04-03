@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface FactoryOwnerService {
     List<FactoryOwner> findAll();
-    Optional<FactoryOwner> findById(Long theId);
+    Optional<FactoryOwner> findById(int theId);
     FactoryOwner save(FactoryOwner factoryOwner);
-    void deleteById(Long theId);
+    void deleteById(int theId);
 
 
 

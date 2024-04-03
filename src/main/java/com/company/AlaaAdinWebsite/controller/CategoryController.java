@@ -2,16 +2,16 @@ package com.company.AlaaAdinWebsite.controller;
 
 import com.company.AlaaAdinWebsite.entity.Category;
 import com.company.AlaaAdinWebsite.service.CategoryService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -34,8 +34,8 @@ public class CategoryController {
 
     // add mapping for GET /employees/{employeeId}
 
-    @GetMapping("/{categoryId}")
-    public Optional<Category> getCategory(@PathVariable Long categoryId) {
+    @GetMapping("category/{categoryId}")
+    public Optional<Category> getCategory(@PathVariable int categoryId) {
 
         Optional<Category> theCategory = categoryService.findById(categoryId);
 
@@ -46,22 +46,22 @@ public class CategoryController {
         return theCategory;
     }
 
+
     @PostMapping("/save")
     public Category addCategory(@RequestBody Category category) {
 
-        category.setId(0L);
-
-
+        category.setId(0);
         return categoryService.save(category);
-//        return "redirect:/category/list";
     }
+
     @PutMapping("/update")
     public Category updateCategory(@RequestBody Category thecategory) {
 
         return categoryService.save(thecategory);
     }
-    @DeleteMapping("/{categoryId}")
-    public String deleteCategory(@PathVariable Long categoryId) {
+
+    @DeleteMapping("/delete/{categoryId}")
+    public String deleteCategory(@PathVariable int categoryId) {
 
         Optional<Category> tempcategory= categoryService.findById(categoryId);
 

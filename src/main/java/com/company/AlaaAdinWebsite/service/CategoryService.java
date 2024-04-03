@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface CategoryService {
     List<Category> findAll();
-    Optional<Category> findById(Long theId);
+    Optional<Category> findById(int theId);
     Category save(Category category);
-    void deleteById(Long theId);
+    void deleteById(int theId);
 
 }

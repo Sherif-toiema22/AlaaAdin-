@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class ProductServiceImp implements ProductService {
 
     private final ProductRepository productRepository;
@@ -27,18 +26,20 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public Optional<Product> findById(Long theId) {
+    public Optional<Product> findById(int theId) {
         return productRepository.findById(theId);
     }
 
+    @Transactional
     @Override
     public Product save(Product product) {
         productRepository.save(product);
         return product;
     }
 
+    @Transactional
     @Override
-    public void deleteById(Long theId) {
-        productRepository.deleteById(theId);
+    public void deleteById(int theId) {
+        productRepository.deleteById( theId);
     }
 }

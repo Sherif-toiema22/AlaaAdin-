@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class SubCategoryServiceImp implements SubCategoryService {
 
     private final SubCategoryRepository subCategoryRepository;
@@ -27,21 +26,21 @@ public class SubCategoryServiceImp implements SubCategoryService {
     }
 
     @Override
-    public Optional<SubCategory> findById(Long theId) {
+    public Optional<SubCategory> findById(int theId) {
         return subCategoryRepository.findById(theId);
     }
 
+    @Transactional
     @Override
     public SubCategory save(SubCategory subCategory) {
         subCategoryRepository.save(subCategory);
         return subCategory;
     }
 
-
-
+    @Transactional
     @Override
-    public void deleteById(Long theId) {
-        subCategoryRepository.deleteById(theId);
+    public void deleteById(int theId) {
+        subCategoryRepository.deleteById( theId);
 
     }
 }

@@ -12,7 +12,6 @@ import java.util.Optional;
 
 
 @Service
-@Transactional
 public class CategoryServiceImp implements CategoryService {
 
     private final CategoryRepository categoryRepository;
@@ -28,8 +27,8 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public Optional<Category> findById(Long theId) {
-        return categoryRepository.findById(theId);
+    public Optional<Category> findById(int theId) {
+        return categoryRepository.findById((long) theId);
     }
 
     @Transactional
@@ -39,9 +38,10 @@ public class CategoryServiceImp implements CategoryService {
         return category;
     }
 
+    @Transactional
     @Override
-    public void deleteById(Long theId) {
-        categoryRepository.deleteById(theId);
+    public void deleteById(int theId) {
+        categoryRepository.deleteById((long) theId);
 
     }
 }

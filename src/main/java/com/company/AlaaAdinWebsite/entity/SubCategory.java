@@ -16,8 +16,9 @@ import java.util.List;
 @Table(name = "subCategory")
 public class SubCategory {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @Column(name = "title")
     private String title;

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ProductService {
     List<Product> findAll();
-    Optional<Product> findById(Long theId);
+    Optional<Product> findById(int theId);
     Product save(Product product);
-    void deleteById(Long theId);
+    void deleteById(int theId);
 }

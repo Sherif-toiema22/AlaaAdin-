@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface SubCategoryService {
     List<SubCategory> findAll();
-    Optional<SubCategory> findById(Long theId);
+    Optional<SubCategory> findById(int theId);
     SubCategory save(SubCategory subCategory);
-    void deleteById(Long theId);
+    void deleteById(int theId);
 }

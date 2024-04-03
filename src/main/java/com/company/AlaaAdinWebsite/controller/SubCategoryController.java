@@ -1,21 +1,19 @@
 package com.company.AlaaAdinWebsite.controller;
-
-import com.company.AlaaAdinWebsite.entity.Product;
 import com.company.AlaaAdinWebsite.entity.SubCategory;
-import com.company.AlaaAdinWebsite.service.ProductService;
 import com.company.AlaaAdinWebsite.service.SubCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/subCategories")
 public class SubCategoryController {
 
 
-    private SubCategoryService subCategoryService;
+    private final SubCategoryService subCategoryService;
 
     @Autowired
     public SubCategoryController(SubCategoryService theSubCategoryService){
@@ -29,43 +27,39 @@ public class SubCategoryController {
 
     // add mapping for GET /employees/{employeeId}
 
-    @GetMapping("/subCategories/{subcategoryId}")
-    public Optional<SubCategory> getSubCategory(@PathVariable Long subcategoryId) {
+    @GetMapping("/subCategory/{subcategoryId}")
+    public Optional<SubCategory> getSubCategory(@PathVariable int subcategoryId) {
 
         Optional<SubCategory> theSubcategory = subCategoryService.findById(subcategoryId);
 
-        if (theSubcategory == null) {
+        if (theSubcategory.isEmpty()) {
             throw new RuntimeException("Sub Category id not found - " + subcategoryId);
         }
 
         return theSubcategory;
     }
 
-    @PostMapping("/subcategories")
+    @PostMapping("/save")
     public SubCategory addSubCategory(@RequestBody SubCategory subCategory) {
 
-        subCategory.setId(0L);
+        subCategory.setId(0);
 
-        SubCategory subCategory1= subCategoryService.save(subCategory);
-
-        return subCategory1;
+        return subCategoryService.save(subCategory);
     }
-    @PutMapping("/subcategories")
+    @PutMapping("/update")
     public SubCategory updateProduct(@RequestBody SubCategory subCategory) {
 
-        SubCategory subcategory1 = subCategoryService.save(subCategory);
-
-        return subcategory1;
+        return subCategoryService.save(subCategory);
     }
 
-    @DeleteMapping("/subcategories/{subcategoryId}")
-    public String deleteSubcategory(@PathVariable Long subcategoryId) {
+    @DeleteMapping("/delete/{subcategoryId}")
+    public String deleteSubcategory(@PathVariable int subcategoryId) {
 
         Optional<SubCategory> tempSubCategory= subCategoryService.findById(subcategoryId);
 
         // throw exception if null
 
-        if (tempSubCategory == null) {
+        if (tempSubCategory.isEmpty()) {
             throw new RuntimeException("sub category id not found - " + subcategoryId);
         }
 

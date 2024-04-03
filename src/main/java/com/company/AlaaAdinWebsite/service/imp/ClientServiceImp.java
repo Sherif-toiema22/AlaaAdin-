@@ -4,6 +4,7 @@ import com.company.AlaaAdinWebsite.dao.ClientRepository;
 import com.company.AlaaAdinWebsite.entity.Client;
 import com.company.AlaaAdinWebsite.service.ClientService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,18 +24,20 @@ public class ClientServiceImp implements ClientService {
     }
 
     @Override
-    public Optional<Client> findById(Long theId) {
-        return clientRepository.findById(theId);
+    public Optional<Client> findById(int theId) {
+        return clientRepository.findById( theId);
     }
 
+    @Transactional
     @Override
     public Client save(Client client) {
 
         return client;
     }
 
+    @Transactional
     @Override
-    public void deleteById(Long theId) {
+    public void deleteById(int theId) {
 
     }
 }
