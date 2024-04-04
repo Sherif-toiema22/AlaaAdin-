@@ -28,20 +28,21 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public Optional<Category> findById(int theId) {
-        return categoryRepository.findById((long) theId);
+        return categoryRepository.findById(theId);
     }
 
-    @Transactional
     @Override
+    @Transactional
     public Category save(Category category) {
         categoryRepository.save(category);
         return category;
     }
 
-    @Transactional
+
     @Override
+    @Transactional
     public void deleteById(int theId) {
-        categoryRepository.deleteById((long) theId);
+        categoryRepository.deleteById(theId);
 
     }
 }
