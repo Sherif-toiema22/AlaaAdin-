@@ -20,10 +20,10 @@ public class CategoryController {
         this.categoryService=categoryService;
     }
 
-    @GetMapping("/hi")
-    public String sayHi() {
-        return "hello";
-    }
+//    @GetMapping("/hi")
+//    public String sayHi() {
+//        return "hello";
+//    }
 
 
     @GetMapping("/list")

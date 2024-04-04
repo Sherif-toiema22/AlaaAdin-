@@ -14,8 +14,8 @@ import java.util.List;
 public class Category {
 
     @Id
-    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private int id;
 
     @Column(name = "imageLink")
