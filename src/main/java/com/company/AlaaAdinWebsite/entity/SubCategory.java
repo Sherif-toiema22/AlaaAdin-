@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "subCategory")
 public class SubCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private int id;
 
@@ -31,7 +31,7 @@ public class SubCategory {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
-            CascadeType.REFRESH,CascadeType.DETACH})
+    @OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+            CascadeType.DETACH,CascadeType.REFRESH,CascadeType.DETACH})
     private List<Product> products;
 }

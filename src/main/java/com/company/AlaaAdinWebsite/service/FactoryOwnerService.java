@@ -12,6 +12,4 @@ public interface FactoryOwnerService {
     FactoryOwner save(FactoryOwner factoryOwner);
     void deleteById(int theId);
 
-
-
 }

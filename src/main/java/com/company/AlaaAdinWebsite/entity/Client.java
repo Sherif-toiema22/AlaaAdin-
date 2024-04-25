@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name = "clients")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private int id;
 
@@ -35,5 +35,6 @@ public class Client {
 
     @Column(name = "address")
     private String address;
+
 
 }
