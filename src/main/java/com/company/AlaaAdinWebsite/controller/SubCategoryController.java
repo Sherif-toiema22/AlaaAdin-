@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/subCategories")
+@CrossOrigin
 public class SubCategoryController {
 
 

@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/clients")
+@CrossOrigin
 public class ClientController {
 
     private final ClientService clientService;

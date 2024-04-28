@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/factoryOwners")
+@CrossOrigin
 public class FactoryOwnerController {
 
     private final FactoryOwnerService factoryOwnerService;

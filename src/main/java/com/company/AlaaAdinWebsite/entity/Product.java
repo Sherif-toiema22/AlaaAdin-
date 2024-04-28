@@ -27,7 +27,7 @@ public class Product {
     private String details;
 
     @Column(name = "rate")
-    private int rate;
+    private int rate=3;
 
     @Column(name = "imageLink")
     private String imageLink;
