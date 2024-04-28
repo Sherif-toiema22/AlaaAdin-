@@ -4,6 +4,7 @@ import com.company.AlaaAdinWebsite.entity.Product;
 import com.company.AlaaAdinWebsite.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,13 @@ public class ProductController {
     @GetMapping("/products")
     public List<Product> findAll() {
         return productService.findAll();
+    }
+
+    @GetMapping("/indexedProducts")
+    public Page<Product> getProductsInRange(
+            @RequestParam(defaultValue = "0") int start,
+            @RequestParam(defaultValue = "10") int end) {
+        return productService.getProductsInRange(start, end);
     }
 
     // add mapping for GET /employees/{employeeId}

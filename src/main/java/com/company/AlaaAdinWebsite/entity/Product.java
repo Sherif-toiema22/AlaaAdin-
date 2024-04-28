@@ -20,8 +20,21 @@ public class Product {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "title")
+    private String title ;
+
+    @Column(name = "details")
+    private String details;
+
+    @Column(name = "rate")
+    private int rate;
+
     @Column(name = "imageLink")
     private String imageLink;
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
+            CascadeType.REFRESH,CascadeType.DETACH})
+    private FactoryOwner factoryOwner;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
             CascadeType.REFRESH,CascadeType.DETACH})

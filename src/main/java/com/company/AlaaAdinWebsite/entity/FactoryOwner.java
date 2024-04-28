@@ -20,11 +20,11 @@ public class FactoryOwner {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "Is_Public")
+    private Boolean Is_Public;
 
     @Column(name = "email")
     private String email;
