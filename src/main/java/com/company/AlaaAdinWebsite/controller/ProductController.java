@@ -28,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping("/indexedProducts")
-    public Page<Product> getProductsInRange(
+    public List<Product> getProductsInRange(
             @RequestParam(defaultValue = "0") int start,
             @RequestParam(defaultValue = "10") int end) {
         return productService.getProductsInRange(start, end);
