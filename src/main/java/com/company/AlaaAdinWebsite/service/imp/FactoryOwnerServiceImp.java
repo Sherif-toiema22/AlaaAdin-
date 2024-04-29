@@ -34,6 +34,7 @@ public class FactoryOwnerServiceImp implements FactoryOwnerService {
     @Override
     public FactoryOwner save(FactoryOwner factoryOwner) {
 
+        factoryOwnerRepository.save(factoryOwner);
         return factoryOwner;
     }
 
