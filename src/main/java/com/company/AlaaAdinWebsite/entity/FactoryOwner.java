@@ -23,6 +23,9 @@ public class FactoryOwner {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "Is_Public")
     private Boolean Is_Public;
 

@@ -32,6 +32,10 @@ public class Product {
     @Column(name = "imageLink")
     private String imageLink;
 
+    @Column(name = "price")
+    private double price;
+
+
     @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
             CascadeType.REFRESH,CascadeType.DETACH})
     private FactoryOwner factoryOwner;
