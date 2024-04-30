@@ -27,5 +27,8 @@ public class Category {
     @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<SubCategory> subCategorys;
 
+    @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<Product> products;
+
 
 }

@@ -11,4 +11,7 @@ public interface ProductService {
     Product save(Product product);
     void deleteById(int theId);
     List<Product> getProductsInRange(int start, int end);
+    List<Product> searchProduct(String searchKey,int start,int end );
+    List<Product> productQuery(String searchKey, Optional<Integer> category, Optional<Integer> subCategory, Optional<Integer> factoryOwner, int start, int end );
+
 }

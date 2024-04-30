@@ -47,7 +47,7 @@ public class FactoryOwner {
     @Column(name = "isApproved")
     private Boolean isApproved=false;
 
-    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "factoryOwner", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Product> products;
 
 

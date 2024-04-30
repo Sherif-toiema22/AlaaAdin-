@@ -4,6 +4,8 @@ import com.company.AlaaAdinWebsite.dao.ProductRepository;
 import com.company.AlaaAdinWebsite.entity.Product;
 import com.company.AlaaAdinWebsite.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +32,30 @@ public class ProductServiceImp implements ProductService {
 
         return productRepository.findAll().subList(start,end);
     }
+
+
+    @Override
+    public List<Product> searchProduct(String searchKey, int start, int end) {
+        PageRequest pageRequest = PageRequest.of(start, end); // Page number is 0-based
+        Page<Product> page = productRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCaseOrDetailsContainingIgnoreCase(
+                searchKey, searchKey, searchKey, pageRequest);
+
+// Extract the list of YourEntity objects
+        List<Product> entityList = page.getContent();
+        return entityList;
+
+    }
+    public List<Product> productQuery(String searchKey, Optional<Integer> category, Optional<Integer> subCategory, Optional<Integer> factoryOwner, int start, int end) {
+        PageRequest pageRequest = PageRequest.of(start, end); // Page number is 0-based
+        Page<Product> page = productRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCaseOrDetailsContainingIgnoreCaseAndCategoryAndSubCategoryAndFactoryOwner(
+                searchKey, searchKey, searchKey,category,subCategory,factoryOwner, pageRequest);
+
+// Extract the list of YourEntity objects
+        List<Product> entityList = page.getContent();
+        return entityList;
+
+    }
+
 
     @Override
     public Optional<Product> findById(int theId) {

@@ -4,7 +4,7 @@ import com.company.AlaaAdinWebsite.entity.Product;
 import com.company.AlaaAdinWebsite.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
-import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +47,25 @@ public class ProductController {
 
         return theProduct;
     }
+
+    @GetMapping("/search")
+    public List<Product> searchProducts(@RequestParam String keyword,
+                                                        @RequestParam(defaultValue = "10") int limit,
+                                                        @RequestParam(defaultValue = "0") int offset) {
+        List<Product> products = productService.searchProduct(keyword, limit, offset);
+        return products;
+    }
+    @GetMapping("/query")
+    public List<Product> queryProducts(@RequestParam String keyword,
+                                       @RequestParam Optional<Integer> category,
+                                       @RequestParam Optional<Integer> subCategory,
+                                       @RequestParam Optional<Integer> factoryOwner,
+                                        @RequestParam(defaultValue = "10") int limit,
+                                        @RequestParam(defaultValue = "0") int offset) {
+        List<Product> products = productService.productQuery(keyword,category,subCategory,factoryOwner, limit, offset);
+        return products;
+    }
+
     @PostMapping("/save")
     public Product addProduct(@RequestBody Product product) {
 

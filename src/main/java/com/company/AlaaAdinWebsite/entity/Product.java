@@ -38,12 +38,18 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
             CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "factory_owner_id")
     private FactoryOwner factoryOwner;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
             CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "sub_category_id")
     private SubCategory subCategory;
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
+            CascadeType.REFRESH,CascadeType.DETACH})
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 
 
