@@ -1,5 +1,7 @@
 package com.company.AlaaAdinWebsite.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,9 +26,12 @@ public class Category {
     @Column(name = "title")
     private String title;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<SubCategory> subCategorys;
 
+
+    @JsonIgnore
     @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Product> products;
 

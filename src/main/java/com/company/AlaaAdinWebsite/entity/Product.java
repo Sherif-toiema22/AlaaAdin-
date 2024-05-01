@@ -1,5 +1,6 @@
 package com.company.AlaaAdinWebsite.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -48,7 +49,7 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
             CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id" )
     private Category category;
 
 

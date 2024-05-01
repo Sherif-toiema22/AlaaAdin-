@@ -1,5 +1,6 @@
 package com.company.AlaaAdinWebsite.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -47,6 +48,7 @@ public class FactoryOwner {
     @Column(name = "isApproved")
     private Boolean isApproved=false;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "factoryOwner", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Product> products;
 
