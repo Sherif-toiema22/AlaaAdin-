@@ -81,25 +81,58 @@ public class ProductController {
     @PostMapping("/save")
     public Product addProduct(@RequestBody Product product ,@RequestParam Optional<Integer> categoryID,@RequestParam Optional<Integer> factoryID,@RequestParam Optional<Integer> subCategoryID) {
 
-        Optional<Category> tempcategory= categoryRepository.findById(categoryID.get());
-        Optional<FactoryOwner> tempFactory= factoryOwnerRepository.findById(factoryID.get());
-        Optional<SubCategory> tempsubCategory= subCategoryRepository.findById(subCategoryID.get());
-
         product.setId(0);
-        product.setCategory(tempcategory.get());
-        product.setFactoryOwner(tempFactory.get());
-        product.setSubCategory(tempsubCategory.get());
+
+        if(categoryID.isPresent())
+        {
+            Optional<Category> tempcategory= categoryRepository.findById(categoryID.get());
+            if(tempcategory.isPresent())
+            {
+                product.setCategory(tempcategory.get());
+            }
+        }
+        if(factoryID.isPresent()) {
+            Optional<FactoryOwner> tempFactory = factoryOwnerRepository.findById(factoryID.get());
+            if(tempFactory.isPresent())
+            {
+                product.setFactoryOwner(tempFactory.get());
+            }
+        }
+        if(subCategoryID.isPresent())
+        {
+            Optional<SubCategory> tempsubCategory= subCategoryRepository.findById(subCategoryID.get());
+            if(tempsubCategory.isPresent())
+            {
+                product.setSubCategory(tempsubCategory.get());
+            }
+        }
         return productService.save(product);
     }
     @PutMapping("/update")
     public Product updateProduct(@RequestBody Product product,@RequestParam Optional<Integer> categoryID,@RequestParam Optional<Integer> factoryID,@RequestParam Optional<Integer> subCategoryID) {
-        Optional<Category> tempcategory= categoryRepository.findById(categoryID.get());
-        Optional<FactoryOwner> tempFactory= factoryOwnerRepository.findById(factoryID.get());
-        Optional<SubCategory> tempsubCategory= subCategoryRepository.findById(subCategoryID.get());
-
-        product.setCategory(tempcategory.get());
-        product.setFactoryOwner(tempFactory.get());
-        product.setSubCategory(tempsubCategory.get());
+        if(categoryID.isPresent())
+        {
+            Optional<Category> tempcategory= categoryRepository.findById(categoryID.get());
+            if(tempcategory.isPresent())
+            {
+                product.setCategory(tempcategory.get());
+            }
+        }
+        if(factoryID.isPresent()) {
+            Optional<FactoryOwner> tempFactory = factoryOwnerRepository.findById(factoryID.get());
+            if(tempFactory.isPresent())
+            {
+                product.setFactoryOwner(tempFactory.get());
+            }
+        }
+        if(subCategoryID.isPresent())
+        {
+            Optional<SubCategory> tempsubCategory= subCategoryRepository.findById(subCategoryID.get());
+            if(tempsubCategory.isPresent())
+            {
+                product.setSubCategory(tempsubCategory.get());
+            }
+        }
         return productService.save(product);
     }
 
