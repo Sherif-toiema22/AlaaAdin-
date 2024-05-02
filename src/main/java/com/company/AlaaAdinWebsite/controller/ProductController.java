@@ -147,8 +147,10 @@ public class ProductController {
             throw new RuntimeException("product id not found - " + productId);
         }
 
-        productService.deleteById(productId);
-
-        return "Deleted product id - " + productId;
+            tempProduct.get().setCategory(null);
+            tempProduct.get().setSubCategory(null);
+            tempProduct.get().setFactoryOwner(null);
+            productService.deleteById(productId);
+            return "Deleted product id - " + productId;
     }
 }
