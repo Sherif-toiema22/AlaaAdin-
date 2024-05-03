@@ -1,4 +1,7 @@
 package com.company.AlaaAdinWebsite.controller;
+import com.company.AlaaAdinWebsite.dao.CategoryRepository;
+import com.company.AlaaAdinWebsite.entity.Category;
+import com.company.AlaaAdinWebsite.entity.FactoryOwner;
 import com.company.AlaaAdinWebsite.entity.SubCategory;
 import com.company.AlaaAdinWebsite.service.SubCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +18,12 @@ public class SubCategoryController {
 
 
     private final SubCategoryService subCategoryService;
+    private final CategoryRepository categoryRepository;
 
     @Autowired
-    public SubCategoryController(SubCategoryService theSubCategoryService){
+    public SubCategoryController(SubCategoryService theSubCategoryService, CategoryRepository categoryRepository){
         this.subCategoryService=theSubCategoryService;
+        this.categoryRepository = categoryRepository;
     }
 
     @GetMapping("/subCategories")
@@ -41,15 +46,34 @@ public class SubCategoryController {
     }
 
     @PostMapping("/save")
-    public SubCategory addSubCategory(@RequestBody SubCategory subCategory) {
+    public SubCategory addSubCategory(@RequestBody SubCategory subCategory,@RequestParam Optional<Integer>  category) {
+
 
         subCategory.setId(0);
+        if(category.isPresent())
+        {
+            Optional<Category> tempCategory= categoryRepository.findById(category.get());
+            if(tempCategory.isPresent())
+            {
+                subCategory.setCategory(tempCategory.get());
+            }
+        }
+
+
 
         return subCategoryService.save(subCategory);
     }
     @PutMapping("/update")
-    public SubCategory updateProduct(@RequestBody SubCategory subCategory) {
+    public SubCategory updateProduct(@RequestBody SubCategory subCategory,@RequestParam Optional<Integer> category) {
 
+        if(category.isPresent())
+        {
+            Optional<Category> tempCategory= categoryRepository.findById(category.get());
+            if(tempCategory.isPresent())
+            {
+                subCategory.setCategory(tempCategory.get());
+            }
+        }
         return subCategoryService.save(subCategory);
     }
 
@@ -63,7 +87,7 @@ public class SubCategoryController {
         if (tempSubCategory.isEmpty()) {
             throw new RuntimeException("sub category id not found - " + subcategoryId);
         }
-
+        tempSubCategory.get().setCategory(null);
         subCategoryService.deleteById(subcategoryId);
 
         return "Deleted sub category id - " + subcategoryId;

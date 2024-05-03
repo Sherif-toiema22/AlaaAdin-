@@ -15,9 +15,16 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
     Page<Product> findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCaseOrDetailsContainingIgnoreCase(
             String title, String description, String details, Pageable pageable);
 
-    Page<Product> findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCaseOrDetailsContainingIgnoreCaseAndCategoryAndSubCategoryAndFactoryOwner(
-            String title, String description, String details, Optional<Integer> category, Optional<Integer> subCategory, Optional<Integer> factoryOwner, Pageable pageable);
+//    Page<Product> findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCaseOrDetailsContainingIgnoreCaseAndCategoryIdAndSubCategoryIdAndFactoryOwnerId(
+//            String title, String description, String details, Optional<Integer> category, Optional<Integer> subCategory, Optional<Integer> factoryOwner, Pageable pageable);
 
+
+    @Query("SELECT p FROM Product p WHERE (p.description LIKE %:keyword% OR p.details LIKE %:keyword% OR p.title LIKE %:keyword%) " +
+            "AND (:category Is NULL OR p.category.id = :category)"+
+            "AND (:subCategory Is NULL OR p.subCategory.id = :subCategory)"+
+            "AND (:factoryOwner Is NULL OR  p.factoryOwner.id = :factoryOwner)")
+    Page<Product> findByKeywordAndCategory(String keyword, Optional<Integer> category, Optional<Integer> subCategory,
+                                           Optional<Integer> factoryOwner, Pageable pageable);
 
 //    @Query("SELECT p FROM Product p WHERE lower(p.title) LIKE %:keyword% " +
 //            "or lower(p.description) LIKE %:keyword% " +

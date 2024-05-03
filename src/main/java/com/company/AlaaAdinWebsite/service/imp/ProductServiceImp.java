@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 @Service
 public class ProductServiceImp implements ProductService {
@@ -45,10 +46,11 @@ public class ProductServiceImp implements ProductService {
         return entityList;
 
     }
+    @Override
     public List<Product> productQuery(String searchKey, Optional<Integer> category, Optional<Integer> subCategory, Optional<Integer> factoryOwner, int start, int end) {
         PageRequest pageRequest = PageRequest.of(start, end); // Page number is 0-based
-        Page<Product> page = productRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCaseOrDetailsContainingIgnoreCaseAndCategoryAndSubCategoryAndFactoryOwner(
-                searchKey, searchKey, searchKey,category,subCategory,factoryOwner, pageRequest);
+        Page<Product> page = productRepository.findByKeywordAndCategory(
+                searchKey,category,subCategory,factoryOwner, pageRequest);
 
 // Extract the list of YourEntity objects
         List<Product> entityList = page.getContent();

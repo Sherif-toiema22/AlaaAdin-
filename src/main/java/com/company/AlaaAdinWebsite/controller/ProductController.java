@@ -79,7 +79,8 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public Product addProduct(@RequestBody Product product ,@RequestParam Optional<Integer> categoryID,@RequestParam Optional<Integer> factoryID,@RequestParam Optional<Integer> subCategoryID) {
+    public Product addProduct(@RequestBody Product product ,@RequestParam Optional<Integer> categoryID,
+                              @RequestParam Optional<Integer> factoryID,@RequestParam Optional<Integer> subCategoryID) {
 
         product.setId(0);
 
