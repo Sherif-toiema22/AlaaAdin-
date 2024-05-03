@@ -8,6 +8,7 @@ import com.company.AlaaAdinWebsite.entity.FactoryOwner;
 import com.company.AlaaAdinWebsite.entity.Product;
 import com.company.AlaaAdinWebsite.entity.SubCategory;
 import com.company.AlaaAdinWebsite.service.ProductService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
 import org.springframework.http.ResponseEntity;
@@ -110,7 +111,21 @@ public class ProductController {
         return productService.save(product);
     }
     @PutMapping("/update")
-    public Product updateProduct(@RequestBody Product product,@RequestParam Optional<Integer> categoryID,@RequestParam Optional<Integer> factoryID,@RequestParam Optional<Integer> subCategoryID) {
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product, @RequestParam Optional<Integer> categoryID,
+                                                 @RequestParam Optional<Integer> subCategoryID, @RequestParam Optional<Integer> factoryID) {
+//
+//        product.setCategoryId(categoryID);
+//        product.setSubCategoryId(subCategoryID);
+//        product.setFactoryOwnerId(factoryID);
+//
+//        int categoryID = product.getCategory().getId();
+//        int factoryID = product.getFactoryOwner().getId();
+//        int subCategoryID = product.getSubCategory().getId();
+//
+//        product.setCategory(categoryRepository.findById(categoryID).get());
+//        product.setSubCategory(subCategoryRepository.findById(subCategoryID).get());
+//        product.setFactoryOwner(factoryOwnerRepository.findById(factoryID).get());
+
         if(categoryID.isPresent())
         {
             Optional<Category> tempcategory= categoryRepository.findById(categoryID.get());
@@ -134,7 +149,9 @@ public class ProductController {
                 product.setSubCategory(tempsubCategory.get());
             }
         }
-        return productService.save(product);
+
+        productService.save(product);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete/{productId}")

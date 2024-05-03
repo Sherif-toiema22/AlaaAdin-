@@ -1,11 +1,12 @@
 package com.company.AlaaAdinWebsite.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Optional;
 
 @Setter
 @Getter
@@ -52,6 +53,15 @@ public class Product {
     @JoinColumn(name = "category_id" )
     private Category category;
 
+    public void setCategoryId(Optional<Integer> categoryID) {
+        category.setId(categoryID.get());
+    }
 
+    public void setSubCategoryId(Optional<Integer> subCategoryId) {
+        subCategory.setId(subCategoryId.get());
+    }
 
+    public void setFactoryOwnerId(Optional<Integer> factoryID) {
+        factoryOwner.setId(factoryID.get());
+    }
 }
