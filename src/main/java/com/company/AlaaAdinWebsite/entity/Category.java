@@ -15,7 +15,7 @@ import java.util.List;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
 
@@ -26,12 +26,14 @@ public class Category {
     private String title;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.DETACH,
+            CascadeType.REFRESH,CascadeType.DETACH})
     private List<SubCategory> subCategorys;
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.DETACH,
+            CascadeType.REFRESH,CascadeType.DETACH})
     private List<Product> products;
 
 

@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "subCategory")
 public class SubCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
 
@@ -27,13 +27,13 @@ public class SubCategory {
     @Column(name = "imageLink")
     private String imageLink;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.DETACH,
             CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "category_id")
     private Category category;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "subCategory", fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+    @OneToMany(mappedBy = "subCategory", fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,
             CascadeType.DETACH,CascadeType.REFRESH,CascadeType.DETACH})
     private List<Product> products;
 }

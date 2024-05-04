@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "factoryOwners")
 public class FactoryOwner {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
 
@@ -49,7 +49,8 @@ public class FactoryOwner {
     private Boolean isApproved=false;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "factoryOwner", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "factoryOwner", fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.DETACH,
+            CascadeType.REFRESH,CascadeType.DETACH})
     private List<Product> products;
 
 
