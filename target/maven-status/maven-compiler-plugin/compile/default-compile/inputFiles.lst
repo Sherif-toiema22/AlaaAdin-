@@ -20,8 +20,10 @@ D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\entity\
 D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\controller\ClientController.java
 D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\controller\ProductController.java
 D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\entity\SubCategory.java
+D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\controller\LoginController.java
 D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\dao\ProductRepository.java
 D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\service\imp\CategoryServiceImp.java
 D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\controller\FactoryOwnerController.java
 D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\entity\Category.java
+D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\entity\LoginRequest.java
 D:\my projects\AlaaAdinWebsite\src\main\java\com\company\AlaaAdinWebsite\dao\FactoryOwnerRepository.java

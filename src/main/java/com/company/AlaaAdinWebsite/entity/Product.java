@@ -15,7 +15,7 @@ import java.util.Optional;
 @Table(name = "product")
 public class Product {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private int id;
 

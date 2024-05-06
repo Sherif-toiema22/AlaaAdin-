@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface FactoryOwnerRepository extends JpaRepository<FactoryOwner,Integer> {
 
     // that's it ... no need to write any code LOL!
+    FactoryOwner findByEmail(String email);
 }
