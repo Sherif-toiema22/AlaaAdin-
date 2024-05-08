@@ -52,4 +52,7 @@ public class FactoryOwner {
     private List<Product> products;
 
 
+//    public FactoryOwner(FactoryOwner factoryOwner) {
+//
+//    }
 }

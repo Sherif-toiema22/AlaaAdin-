@@ -35,4 +35,6 @@ public class Client {
     private String address;
 
 
+//    public Client(Client client) {
+//    }
 }

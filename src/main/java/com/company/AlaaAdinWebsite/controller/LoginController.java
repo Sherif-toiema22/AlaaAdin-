@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class LoginController {
 
@@ -19,18 +20,22 @@ public class LoginController {
     private FactoryOwnerRepository factoryOwnerRepository;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest loginRequest) {
+    public Object login(@RequestBody LoginRequest loginRequest) {
         Client client = clientRepository.findByEmail(loginRequest.getEmail());
         FactoryOwner factoryOwner=factoryOwnerRepository.findByEmail(loginRequest.getEmail());
         if (client != null ) {
             if(client.getPassword().equals(loginRequest.getPassword())) {
-                return client+"\nWelcome Client!";
+                return client.getId()+client.getFirstName()+client.getLastName() +
+                        client.getEmail()+ client.getPassword() + client.getAddress()+ client.getPhone_number()
+                        +"\nWelcome Client!";
             }else {
                 return "Right client gmail but Wrong Password";
             }
             } else if (factoryOwner != null) {
             if (factoryOwner.getPassword().equals(loginRequest.getPassword())) {
-                return factoryOwner+"\nWelcome Factory Owner!";
+                return factoryOwner.getId()+factoryOwner.getName()+factoryOwner.getAddress()+
+                        factoryOwner.getEmail()+factoryOwner.getPassword() +factoryOwner.getImageLink()+factoryOwner.getIs_Public()
+                        +factoryOwner.getPhone_number()+factoryOwner.getIsApproved()+"\nWelcome Factory Owner!";
             }else{
                 return "Right factory owner gmail but Wrong Password";
             }
@@ -38,6 +43,7 @@ public class LoginController {
 //        else if ("ADMIN".equals(role)) {
 //                return "Welcome Admin!";
 //            }
+        else 
         return "Invalid email or role not found";
     }
 }
