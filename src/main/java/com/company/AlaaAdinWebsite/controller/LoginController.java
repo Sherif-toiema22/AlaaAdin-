@@ -25,17 +25,17 @@ public class LoginController {
         FactoryOwner factoryOwner=factoryOwnerRepository.findByEmail(loginRequest.getEmail());
         if (client != null ) {
             if(client.getPassword().equals(loginRequest.getPassword())) {
-                return client.getId()+client.getFirstName()+client.getLastName() +
-                        client.getEmail()+ client.getPassword() + client.getAddress()+ client.getPhone_number()
+                return client.getId()+"\n"+client.getFirstName()+"\n"+client.getLastName()+"\n" +
+                        client.getEmail()+"\n"+ client.getPassword()+"\n" + client.getAddress()+"\n"+ client.getPhone_number()
                         +"\nWelcome Client!";
             }else {
                 return "Right client gmail but Wrong Password";
             }
             } else if (factoryOwner != null) {
             if (factoryOwner.getPassword().equals(loginRequest.getPassword())) {
-                return factoryOwner.getId()+factoryOwner.getName()+factoryOwner.getAddress()+
-                        factoryOwner.getEmail()+factoryOwner.getPassword() +factoryOwner.getImageLink()+factoryOwner.getIs_Public()
-                        +factoryOwner.getPhone_number()+factoryOwner.getIsApproved()+"\nWelcome Factory Owner!";
+                return factoryOwner.getId()+"\n"+factoryOwner.getName()+"\n"+factoryOwner.getAddress()+"\n"+
+                        factoryOwner.getEmail()+"\n"+factoryOwner.getPassword()+"\n" +factoryOwner.getImageLink()+"\n"+factoryOwner.getIs_Public()+"\n"
+                        +factoryOwner.getPhone_number()+"\n"+factoryOwner.getIsApproved()+"\nWelcome Factory Owner!";
             }else{
                 return "Right factory owner gmail but Wrong Password";
             }
