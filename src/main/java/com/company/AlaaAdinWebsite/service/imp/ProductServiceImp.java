@@ -77,9 +77,5 @@ public class ProductServiceImp implements ProductService {
         productRepository.deleteById( theId);
     }
 
-    @Override
-    public Page<Product> countSearch(String searchTerm, int page, int size) {
-        PageRequest pageRequest = PageRequest.of(page, size);
-        return productRepository.findByCategoryContainingOrSubcategoryContainingOrNameContaining(searchTerm, searchTerm, searchTerm, pageRequest);
-    }
+
 }
