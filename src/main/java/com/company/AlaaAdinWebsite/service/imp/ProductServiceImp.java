@@ -58,6 +58,11 @@ public class ProductServiceImp implements ProductService {
 
     }
 
+    @Override
+    public int countSearchResults(String searchTerm) {
+        return  productRepository.countByCategoryContainingOrSubcategoryContainingOrNameContaining(searchTerm, searchTerm, searchTerm);
+    }
+
 
     @Override
     public Optional<Product> findById(int theId) {

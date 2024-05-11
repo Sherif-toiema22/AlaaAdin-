@@ -79,6 +79,11 @@ public class ProductController {
         return products;
     }
 
+    @GetMapping("/search/count")
+    public int countSearchResults(@RequestParam String searchTerm) {
+        return productService.countSearchResults(searchTerm);
+    }
+
     @PostMapping("/save")
     public Product addProduct(@RequestBody Product product ,@RequestParam Optional<Integer> categoryID,
                               @RequestParam Optional<Integer> factoryID,@RequestParam Optional<Integer> subCategoryID) {

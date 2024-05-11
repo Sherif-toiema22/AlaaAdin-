@@ -1,5 +1,6 @@
 package com.company.AlaaAdinWebsite.controller;
 import com.company.AlaaAdinWebsite.dao.CategoryRepository;
+import com.company.AlaaAdinWebsite.dao.FactoryOwnerRepository;
 import com.company.AlaaAdinWebsite.entity.Category;
 import com.company.AlaaAdinWebsite.entity.FactoryOwner;
 import com.company.AlaaAdinWebsite.entity.SubCategory;
@@ -19,11 +20,14 @@ public class SubCategoryController {
 
     private final SubCategoryService subCategoryService;
     private final CategoryRepository categoryRepository;
+    private final FactoryOwnerRepository factoryOwnerRepository;
+
 
     @Autowired
-    public SubCategoryController(SubCategoryService theSubCategoryService, CategoryRepository categoryRepository){
+    public SubCategoryController(SubCategoryService theSubCategoryService, CategoryRepository categoryRepository, FactoryOwnerRepository factoryOwnerRepository){
         this.subCategoryService=theSubCategoryService;
         this.categoryRepository = categoryRepository;
+        this.factoryOwnerRepository = factoryOwnerRepository;
     }
 
     @GetMapping("/subCategories")
@@ -46,20 +50,18 @@ public class SubCategoryController {
     }
 
     @PostMapping("/save")
-    public SubCategory addSubCategory(@RequestBody SubCategory subCategory,@RequestParam Optional<Integer>  category) {
+    public SubCategory addSubCategory(@RequestBody SubCategory subCategory,@RequestParam Optional<Integer> categoryID) {
 
 
         subCategory.setId(0);
-        if(category.isPresent())
+        if(categoryID.isPresent())
         {
-            Optional<Category> tempCategory= categoryRepository.findById(category.get());
+            Optional<Category> tempCategory= categoryRepository.findById(categoryID.get());
             if(tempCategory.isPresent())
             {
                 subCategory.setCategory(tempCategory.get());
             }
         }
-
-
 
         return subCategoryService.save(subCategory);
     }

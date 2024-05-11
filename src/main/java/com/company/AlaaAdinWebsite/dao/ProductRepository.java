@@ -25,6 +25,8 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
             "AND (:factoryOwner Is NULL OR  p.factoryOwner.id = :factoryOwner)")
     Page<Product> findByKeywordAndCategory(String keyword, Optional<Integer> category, Optional<Integer> subCategory,
                                            Optional<Integer> factoryOwner, Pageable pageable);
+    int countByCategoryContainingOrSubcategoryContainingOrNameContaining(String category, String subcategory, String name);
+
 
 //    @Query("SELECT p FROM Product p WHERE lower(p.title) LIKE %:keyword% " +
 //            "or lower(p.description) LIKE %:keyword% " +
