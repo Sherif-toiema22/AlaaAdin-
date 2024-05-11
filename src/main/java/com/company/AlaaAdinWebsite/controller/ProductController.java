@@ -11,6 +11,7 @@ import com.company.AlaaAdinWebsite.service.ProductService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,13 +62,13 @@ public class ProductController {
         return theProduct;
     }
 
-    @GetMapping("/search")
-    public List<Product> searchProducts(@RequestParam String keyword,
-                                                        @RequestParam(defaultValue = "10") int limit,
-                                                        @RequestParam(defaultValue = "0") int offset) {
-        List<Product> products = productService.searchProduct(keyword, limit, offset);
-        return products;
-    }
+//    @GetMapping("/search")
+//    public List<Product> searchProducts(@RequestParam String keyword,
+//                                                        @RequestParam(defaultValue = "10") int limit,
+//                                                        @RequestParam(defaultValue = "0") int offset) {
+//        List<Product> products = productService.searchProduct(keyword, limit, offset);
+//        return products;
+//    }
     @GetMapping("/query")
     public List<Product> queryProducts(@RequestParam String keyword,
                                        @RequestParam Optional<Integer> category,
@@ -79,9 +80,11 @@ public class ProductController {
         return products;
     }
 
-    @GetMapping("/search/count")
-    public int countSearchResults(@RequestParam String searchTerm) {
-        return productService.countSearchResults(searchTerm);
+    @GetMapping("/count")
+    public Page<Product> searchProducts(@RequestParam String searchTerm,
+                                        @RequestParam(defaultValue = "0") int page,
+                                        @RequestParam(defaultValue = "10") int size) {
+        return productService.countSearch(searchTerm, page, size);
     }
 
     @PostMapping("/save")

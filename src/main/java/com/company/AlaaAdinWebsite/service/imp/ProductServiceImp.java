@@ -58,11 +58,6 @@ public class ProductServiceImp implements ProductService {
 
     }
 
-    @Override
-    public int countSearchResults(String searchTerm) {
-        return  productRepository.countByCategoryContainingOrSubcategoryContainingOrNameContaining(searchTerm, searchTerm, searchTerm);
-    }
-
 
     @Override
     public Optional<Product> findById(int theId) {
@@ -80,5 +75,11 @@ public class ProductServiceImp implements ProductService {
     @Override
     public void deleteById(int theId) {
         productRepository.deleteById( theId);
+    }
+
+    @Override
+    public Page<Product> countSearch(String searchTerm, int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return productRepository.findByCategoryContainingOrSubcategoryContainingOrNameContaining(searchTerm, searchTerm, searchTerm, pageRequest);
     }
 }
