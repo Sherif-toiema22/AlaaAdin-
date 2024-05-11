@@ -25,21 +25,21 @@ public class LoginController {
         FactoryOwner factoryOwner=factoryOwnerRepository.findByEmail(loginRequest.getEmail());
         if (client != null ) {
             if(client.getPassword().equals(loginRequest.getPassword())) {
-                return"data:{\n\"id\": "+client.getId()+","+",\n"+"\"firstName\": "+"\""+client.getFirstName()+"\""+",\n"+"\""+"\"lastName\": "+"\""+client.getLastName()+"\",\n"+
+                return"{\"data\":{\n\"id\": "+client.getId()+",\n"+"\"firstName\": "+"\""+client.getFirstName()+"\""+",\n"+"\"lastName\": "+"\""+client.getLastName()+"\",\n"+
                         "\"address\": "+"\""+client.getAddress()+"\",\n"+
                         "\"email\": "+"\""+client.getEmail()+"\",\n"+
-                        ",\n"+"\"phone\": "+"\""+client.getPhone_number()+"\",\n"+
-                        "}\n"+"\"type\""+":\"Client\"";
+                        "\"phone\": "+"\""+client.getPhone_number()+"\",\n"+
+                        "}\n"+",\"type\""+":\"Client\"}";
             }else {
                 return "Right client gmail but Wrong Password";
             }
             } else if (factoryOwner != null) {
             if (factoryOwner.getPassword().equals(loginRequest.getPassword())) {
-                return "data:{\n\"id\": "+factoryOwner.getId()+",\n"+"\"title\": "+"\""+factoryOwner.getTitle()+"\",\n"+"\"name\": "+"\""+factoryOwner.getName()+"\""+
+                return "{\"data\":{\n\"id\": "+factoryOwner.getId()+",\n"+"\"title\": "+"\""+factoryOwner.getTitle()+"\",\n"+"\"name\": "+"\""+factoryOwner.getName()+"\""+
                         ",\n"+"\"address\": "+"\""+factoryOwner.getAddress()+"\",\n"+
-                        "\"email\": "+"\""+factoryOwner.getEmail()+"\""+",\n"+",\n" +"\"imageLink\": "+"\""+factoryOwner.getImageLink()+"\""+ ",\n"+
+                        "\"email\": "+"\""+factoryOwner.getEmail()+"\""+",\n" +"\"imageLink\": "+"\""+factoryOwner.getImageLink()+"\""+ ",\n"+
                         "\"isApproved\": "+factoryOwner.getIsApproved()+",\n"+"\"phone\": "+"\""+factoryOwner.getPhone_number()+"\""+",\n"+"\"isPublic\": "+factoryOwner.getIs_Public()+"\n"+
-                        "}\n"+"\"type\""+":\"Factory Owner\"";
+                        "}\n"+",\"type\""+":\"Factory Owner\"}";
             }else{
                 return "Right factory owner gmail but Wrong Password";
             }

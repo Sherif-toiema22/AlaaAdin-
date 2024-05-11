@@ -6,6 +6,7 @@ import com.company.AlaaAdinWebsite.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +18,12 @@ import java.util.OptionalInt;
 public class ProductServiceImp implements ProductService {
 
     private final ProductRepository productRepository;
+    private final OpenEntityManagerInViewInterceptor openEntityManagerInViewInterceptor;
 
     @Autowired
-    public ProductServiceImp(ProductRepository productRepository) {
+    public ProductServiceImp(ProductRepository productRepository, OpenEntityManagerInViewInterceptor openEntityManagerInViewInterceptor) {
         this.productRepository = productRepository;
+        this.openEntityManagerInViewInterceptor = openEntityManagerInViewInterceptor;
     }
 
     @Override
@@ -55,6 +58,14 @@ public class ProductServiceImp implements ProductService {
 // Extract the list of YourEntity objects
         List<Product> entityList = page.getContent();
         return entityList;
+
+    }
+    @Override
+    public int productsCount(String searchKey, Optional<Integer> category, Optional<Integer> subCategory, Optional<Integer> factoryOwner) {
+        int searchedCount = productRepository.searchCount(
+                searchKey,category,subCategory,factoryOwner);
+
+        return searchedCount;
 
     }
 

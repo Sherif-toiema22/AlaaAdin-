@@ -80,12 +80,13 @@ public class ProductController {
         return products;
     }
 
-//    @GetMapping("/count")
-//    public Page<Product> searchProducts(@RequestParam String searchTerm,
-//                                        @RequestParam(defaultValue = "0") int page,
-//                                        @RequestParam(defaultValue = "10") int size) {
-//        return productService.countSearch(searchTerm, page, size);
-//    }
+    @GetMapping("/count")
+    public int searchProducts(@RequestParam String keyword,
+                                        @RequestParam Optional<Integer> category,
+                                        @RequestParam Optional<Integer> subCategory,
+                                        @RequestParam Optional<Integer> factoryOwner) {
+        return productService.productsCount(keyword,category,subCategory,factoryOwner);
+    }
 
     @PostMapping("/save")
     public Product addProduct(@RequestBody Product product ,@RequestParam Optional<Integer> categoryID,
