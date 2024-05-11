@@ -27,7 +27,7 @@ public class LoginController {
             if(client.getPassword().equals(loginRequest.getPassword())) {
                 return"data:{\n\"id\": "+client.getId()+","+",\n"+"\"firstName\": "+"\""+client.getFirstName()+"\""+",\n"+"\""+"\"lastName\": "+"\""+client.getLastName()+"\",\n"+
                         "\"address\": "+"\""+client.getAddress()+"\",\n"+
-                        "\"email\": "+"\""+client.getEmail()+"\",\n"+"\"password\": "+"\""+client.getPassword()+"\",\n" +
+                        "\"email\": "+"\""+client.getEmail()+"\",\n"+
                         ",\n"+"\"phone\": "+"\""+client.getPhone_number()+"\",\n"+
                         "}\n"+"\"type\""+":\"Client\"";
             }else {
@@ -37,7 +37,7 @@ public class LoginController {
             if (factoryOwner.getPassword().equals(loginRequest.getPassword())) {
                 return "data:{\n\"id\": "+factoryOwner.getId()+",\n"+"\"title\": "+"\""+factoryOwner.getTitle()+"\",\n"+"\"name\": "+"\""+factoryOwner.getName()+"\""+
                         ",\n"+"\"address\": "+"\""+factoryOwner.getAddress()+"\",\n"+
-                        "\"email\": "+"\""+factoryOwner.getEmail()+"\""+",\n"+"\"password\": "+"\""+factoryOwner.getPassword()+"\""+",\n" +"\"imageLink\": "+"\""+factoryOwner.getImageLink()+"\""+ ",\n"+
+                        "\"email\": "+"\""+factoryOwner.getEmail()+"\""+",\n"+",\n" +"\"imageLink\": "+"\""+factoryOwner.getImageLink()+"\""+ ",\n"+
                         "\"isApproved\": "+factoryOwner.getIsApproved()+",\n"+"\"phone\": "+"\""+factoryOwner.getPhone_number()+"\""+",\n"+"\"isPublic\": "+factoryOwner.getIs_Public()+"\n"+
                         "}\n"+"\"type\""+":\"Factory Owner\"";
             }else{
