@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "factoryOwners")
 public class FactoryOwner {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private int id;
 
