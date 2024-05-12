@@ -28,7 +28,7 @@ public class LoginController {
                 return"{\"data\":{\n\"id\": "+client.getId()+",\n"+"\"firstName\": "+"\""+client.getFirstName()+"\""+",\n"+"\"lastName\": "+"\""+client.getLastName()+"\",\n"+
                         "\"address\": "+"\""+client.getAddress()+"\",\n"+
                         "\"email\": "+"\""+client.getEmail()+"\",\n"+
-                        "\"phone\": "+"\""+client.getPhone_number()+"\",\n"+
+                        "\"phone\": "+"\""+client.getPhone_number()+"\"\n"+
                         "}\n"+",\"type\""+":\"Client\"}";
             }else {
                 return "Right client gmail but Wrong Password";
