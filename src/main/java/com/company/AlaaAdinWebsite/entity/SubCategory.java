@@ -34,6 +34,6 @@ public class SubCategory {
 
     @JsonIgnore
     @OneToMany(mappedBy = "subCategory", fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,
-            CascadeType.DETACH,CascadeType.REFRESH,CascadeType.DETACH})
+            CascadeType.DETACH,CascadeType.REFRESH,CascadeType.DETACH,CascadeType.REMOVE})
     private List<Product> products;
 }

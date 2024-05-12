@@ -32,8 +32,8 @@ public class Category {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.DETACH,
-            CascadeType.REFRESH,CascadeType.DETACH})
+    @OneToMany(mappedBy = "category" ,fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST,CascadeType.DETACH, CascadeType.REMOVE})
     private List<Product> products;
 
 

@@ -41,6 +41,7 @@ public class FactoryOwnerServiceImp implements FactoryOwnerService {
     @Transactional
     @Override
     public void deleteById(int theId) {
+        factoryOwnerRepository.deleteById(theId);
 
     }
 }

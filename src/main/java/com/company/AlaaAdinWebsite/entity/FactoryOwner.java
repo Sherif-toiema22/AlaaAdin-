@@ -48,7 +48,7 @@ public class FactoryOwner {
 
     @JsonIgnore
     @OneToMany(mappedBy = "factoryOwner", fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.DETACH,
-            CascadeType.REFRESH,CascadeType.DETACH})
+            CascadeType.REFRESH,CascadeType.DETACH,CascadeType.REMOVE})
     private List<Product> products;
 
 
